@@ -1,0 +1,78 @@
+:root {
+  --color-bg: #f5f2ee;
+  --color-surface: #ffffff;
+  --color-surface-strong: #eef4f2;
+  --color-card: rgba(255, 255, 255, 0.72);
+  --color-text: #1b2324;
+  --color-text-soft: #4d595d;
+  --color-heading: #111827;
+  --color-primary: #0f766e;
+  --color-primary-strong: #0b5b52;
+  --color-border: rgba(17, 24, 39, 0.08);
+  --shadow-soft: 0 18px 38px rgba(17, 24, 39, 0.05);
+  --shadow-card: 0 12px 28px rgba(17, 24, 39, 0.04);
+  --radius-card: 1.5rem;
+
+  font-family: Inter, 'Segoe UI', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--color-text);
+  background: var(--color-bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.4), rgba(245, 242, 238, 0.8)),
+    var(--color-bg);
+  color: var(--color-text);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+svg {
+  display: block;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+button,
+a {
+  font: inherit;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin-top: 0;
+}
+
+p {
+  margin-bottom: 0;
+}
