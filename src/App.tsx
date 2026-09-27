@@ -1,5 +1,4 @@
 ﻿import { useCallback, useEffect, useMemo, useState } from 'react'
-import './App.css'
 import { achievementItems } from './data/achievements'
 import { certificateItems } from './data/certificates'
 import { galleryPhotos } from './data/gallery'
