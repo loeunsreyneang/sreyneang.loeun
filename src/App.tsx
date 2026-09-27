@@ -6,6 +6,7 @@ import { journeyItems } from './data/journey'
 import { growthAreas, interests, workshops } from './data/personal'
 import { portfolioProjects } from './data/projects'
 
+
 const navItems = [
   { label: 'Home', href: '#home' },
   { label: 'About', href: '#about' },
