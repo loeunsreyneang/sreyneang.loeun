@@ -11,7 +11,7 @@ export const interests: PersonalCard[] = [
   { title: 'Photography', description: 'Keeping meaningful moments and small details in view.', icon: 'Frame' },
 ]
 
-export const growthAreas = ['QA Testing', 'Selenium', 'Appium', 'SQL', 'Software Engineering', 'English', 'Communication', 'Problem Solving']
+export const growthAreas = ['QA Testing', 'Software Engineering', 'English', 'Communication', 'Problem Solving']
 
 export const workshops = [
   { title: 'UX/UI Design', facilitator: 'Add facilitator', organization: 'Add organization', date: 'Date to add', description: 'A workshop or training experience to document here.' },

@@ -1,3 +1,4 @@
+
 export type JourneyItem = {
   id: number
   year: string
@@ -9,21 +10,54 @@ export type JourneyItem = {
 }
 
 export const journeyItems: JourneyItem[] = [
-  { id: 1, year: '2017 - 2019', title: 'Samdach Ov Mae Kravanh', description: 'The early memories, people, and experiences that shaped my curiosity.' },
-
-  { id: 2, year: '2019 - 2023', title: 'Hun Sen Phnom Kravanh High School', description: 'Learning discipline, building confidence, and discovering the value of steady effort.' },
-
-  { id: 5, year: '2023 - 2025', title: 'PNC', description: 'A new learning environment and an important step in my education and technology journey.' },
-
-  { id: 6, year: '2024- Present', title: 'University Projects', description: 'Turning concepts into practical work and learning through making.' },
-
-  { id: 7, year: '2024 - Present', title: 'Training & Workshops', description: 'Building confidence through focused learning beyond the classroom.' },
-
-  { id: 8, year: '2025', title: 'Internship', description: 'Learning how professional teams collaborate, communicate, and deliver.' },
-
-  { id: 9, year: '2025 - Present', title: 'QA Tester', description: 'Applying a careful testing mindset to real product experiences.' },
-
-  { id: 10, year: '2025 - Present', title: 'Software Engineering', description: 'Growing technical foundations and building reliable, useful software.' },
-
-  { id: 11, year: 'Future', title: 'Future Goals', description: 'Continuing to learn and contributing to products people can trust.' },
+  {
+    id: 1,
+    year: '2017 - 2019',
+    title: 'Samdach Ov Mae Kravanh',
+    description:
+      'Studied at secondary school from Grade 7 to Grade 9 and completed the Lower Secondary Diploma Examination.'
+  },
+  {
+    id: 2,
+    year: '2020 - 2023',
+    title: 'Hun Sen Phnom Kravanh High School',
+    description:
+      'Studied from Grade 10 to Grade 12 and completed the Cambodia Grade 12 National Examination (Bac II).'
+  },
+  {
+    id: 5,
+    year: '2023 - 2025',
+    title: 'Passerelles Numériques Cambodia (PNC)',
+    description:
+      'Studied Web Development and completed an Associate Degree, gaining knowledge in programming, web technologies, databases, software development, and IT fundamentals.'
+  },
+  {
+    id: 8,
+    year: '2025',
+    title: 'Web Development Internship',
+    description:
+      'Completed a Web Development internship where I worked mainly with WordPress, gaining my first experience in a professional IT environment and learning how to work with real projects and teams.'
+  },
+  {
+    id: 6,
+    year: '2025 - Present',
+    title: 'Beltie International University',
+    description:
+      'Studying Software Engineering to strengthen my knowledge of programming, software development, system analysis and design, databases, and software engineering concepts.'
+  },
+  {
+    id: 9,
+    year: '2025 - Present',
+    title: 'QA Tester',
+    description:
+      'Started my first professional job as a QA Tester, gaining practical experience in manual testing, writing test cases and test documents, reporting issues, and understanding real software workflows.'
+  },
+  {
+    id: 11,
+    year: 'Future',
+    title: 'Future Goals',
+    description:
+      'Willing to continue learning new technologies and developing knowledge in both IT and management, while gaining professional experience and exploring new opportunities.'
+  },
 ]
+
