@@ -34,4 +34,12 @@ export const portfolioProjects: PortfolioProject[] = [
     technologies: ['Manual QA', 'Regression', 'Bug Reporting', 'Documentation'],
     contribution: 'Created test scenarios, tracked issues, and verified release readiness through repeatable QA process.',
   },
+  {
+    id: 4,
+    name: 'Bijou Serviced Residence Management System',
+    category: 'Property Management System · User Documentation',
+    description: 'A user guide for a serviced-residence platform covering daily bookings, long-term leases, contracts, invoicing, payments, deposits, housekeeping, reporting, security, and configuration.',
+    technologies: ['User Documentation', 'Operational Workflows', 'Property Management'],
+    contribution: 'Authored and structured the user guide to help residence staff navigate key workflows, including room and customer master data, booking operations, financial records, housekeeping, and reports.',
+  },
 ]
