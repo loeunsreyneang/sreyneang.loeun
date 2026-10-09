@@ -25,6 +25,21 @@
   scroll-behavior: smooth;
 }
 
+:root[data-theme='dark'] {
+  --color-bg: #101817;
+  --color-surface: #17211f;
+  --color-surface-strong: #1d2d2a;
+  --color-card: rgba(23, 33, 31, 0.86);
+  --color-text: #e7efec;
+  --color-text-soft: #b0c0bb;
+  --color-heading: #f4faf7;
+  --color-primary: #67c8b8;
+  --color-primary-strong: #36a99a;
+  --color-border: rgba(222, 245, 237, 0.13);
+  --shadow-soft: 0 18px 38px rgba(0, 0, 0, 0.24);
+  --shadow-card: 0 12px 28px rgba(0, 0, 0, 0.2);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -39,6 +54,10 @@ body {
     linear-gradient(180deg, rgba(255, 255, 255, 0.4), rgba(245, 242, 238, 0.8)),
     var(--color-bg);
   color: var(--color-text);
+}
+
+:root[data-theme='dark'] body {
+  background: radial-gradient(circle at top right, rgba(60, 145, 132, 0.12), transparent 32rem), var(--color-bg);
 }
 
 img {

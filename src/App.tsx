@@ -3,8 +3,8 @@ import { achievementItems } from './data/achievements'
 import { certificateItems } from './data/certificates'
 import { galleryPhotos } from './data/gallery'
 import { journeyItems } from './data/journey'
-import { growthAreas, interests, workshops } from './data/personal'
-import { portfolioProjects } from './data/projects'
+import { interests } from './data/personal'
+import { updatedPortfolioProjects, type ProjectModuleIcon } from './data/projects'
 
 
 const navItems = [
@@ -13,18 +13,26 @@ const navItems = [
   { label: 'Skills', href: '#skills' },
   { label: 'Experience', href: '#experience' },
   { label: 'Projects', href: '#projects' },
+  { label: 'Education', href: '#education' },
   { label: 'Journey', href: '#journey' },
   // { label: 'Certificates', href: '#certificates' },
   // { label: 'Beyond CV', href: '#beyond-cv' },
   { label: 'Contact', href: '#contact' },
 ]
 
-const skillGroups = [
-  { title: 'QA & Testing', items: ['Manual Testing', 'Regression', 'UAT', 'Bug Reporting', 'Test Planning', 'Cross-browser QA','Test Case Writting'] },
-  { title: 'Development', items: ['HTML CSS & Bootstrap5', 'Laravel', 'JavaScript', 'React', 'TypeScript', 'Git','PHP', 'Vue.js','Node.js'] },
-  { title: 'Learning Program', items: ['Java Programming', 'Oracle Database', 'UX/UI Design', 'System Analysis & Design', 'OOP & C#', 'Mobile App Development'] },
-  { title: 'Database', items: ['MySQL', 'Oracle', 'Data Validation', 'Query Analysis', 'Test Data Design'] },
+const technicalSkillGroups = [
+  { title: 'Web Development', icon: '⌘', items: ['HTML', 'CSS', 'Bootstrap 5', 'JavaScript', 'Vue.js', 'React.js', 'PHP', 'Laravel', 'Node.js · Basic REST API', 'WordPress'] },
+  { title: 'Programming & Database', icon: '◇', items: ['OOP with TypeScript', 'Java', 'C#', 'MySQL', 'Oracle Database', 'Firebase'] },
+  { title: 'Tools, Design & Deployment', icon: '↗', items: ['Git', 'GitHub', 'Jira', 'AWS', 'Vercel', 'Netlify', 'Canva', 'Figma', 'Draw.io', 'Postman', 'Microsoft Office'] },
+  { title: 'Data Analytics', icon: '▥', items: ['Power BI', 'Data Analysis'] },
 ]
+
+const qaSkillGroups = [
+  { title: 'Beginner', status: 'Current skills', tone: 'current', items: ['Manual Testing (UI & Logical)', 'Test Case Writing & Execution', 'Test Plan Writing (Google Docs, Excel)', 'Test Scenario Design (Google Sheets)', 'Positive & Negative Testing', 'Boundary Value & Edge Case Testing', 'Bug Reporting & Tracking', 'Regression Testing', 'Exploratory Testing', 'User Manuals & Guides (Docusaurus)', 'Jira', 'Git Basics'] },
+  { title: 'Intermediate', status: 'Currently learning', tone: 'learning', items: ['SQL & Database Testing', 'API Testing with Postman', 'HTTP Methods & Status Codes', 'API Authentication & Authorization', 'Java for QA Automation', 'Selenium WebDriver', 'Automated Test Execution', 'Assertions & Test Frameworks', 'Mobile Application Testing', 'Appium Automation Testing'] },
+]
+
+const softSkills = ['Teamwork', 'Leadership', 'Adaptability', 'Collaboration', 'High Motivation', 'Communication', 'Problem-Solving', 'High Commitment', 'Time Management']
 
 const experience = [
   { role: 'QA Tester', company: 'Software Company', period: '2025 — Present', description: 'Testing feature quality, regression stability, and user flows across web products.', responsibilities: ['Validate releases and report actionable bugs', 'Execute test cases across functional and UI scenarios', 'Collaborate with developers to confirm fixes and verify outcomes'] },
@@ -38,10 +46,8 @@ const experience = [
 ]
 
 const education = [
-  { title: 'Web Development', meta: 'Achieved', description: 'Studied web development, programming, databases, and software development at Passerelles Numériques Cambodia.'  },
-  { title: 'Software Engineering', meta: 'Current study path', description: 'Focused on software design, quality thinking, product development, and modern web engineering.' },
-  { title: 'QA & Testing Practice', meta: 'Hands-on learning', description: 'Improving test design, validation workflows, and defect communication through practical work.' },
-  { title: 'Continuous Learning', meta: 'Ongoing growth', description: 'Exploring UI design, accessibility, quality processes, and reliable digital product development.' },
+  { title: 'Associate Degree — IT / Web Development', meta: '2023 — 2025 · Passerelles Numériques Cambodia (PNC)', description: 'Studied Web Development and completed an Associate Degree, building a foundation across programming, web technologies, databases, software development, and IT fundamentals.', courses: ['Web Design', 'Front-End Development with Vue.js', 'Object-Oriented Programming with TypeScript', 'Database', 'Virtual Company 1 — POS System Project', 'Node.js', 'English', 'Professional Life', 'UI Design', 'Basic Computer Solving', 'Logic and Problem-Solving', 'Data Analysis', 'Back-End Development with Laravel', 'Virtual Company 2 — Farmer System and Website'], technologies: ['PHP', 'Laravel', 'Vue.js', 'JavaScript', 'TypeScript', 'MySQL', 'Node.js', 'React.js'] },
+  { title: "Bachelor's Degree — Software Engineering", meta: '2025 — Present · Beltie International University', description: 'Studying Software Engineering to strengthen programming, software development, system analysis and design, databases, and software engineering concepts.', courses: ['Java Programming I and II', 'C# and Object-Oriented Programming I and II', 'Mobile Application Development', 'UX/UI Design', 'Oracle Database I and II', 'E-commerce', 'Design and Data Analysis'], technologies: ['Java', 'Spring Boot', 'C#', 'Flutter', 'Oracle Database', 'Object-Oriented Programming'] },
 ]
 
 const contactLinks = [
@@ -64,16 +70,77 @@ function SocialIcon({ label }: { label: string }) {
   return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7.5A2.5 2.5 0 0 1 6.5 5h11A2.5 2.5 0 0 1 20 7.5v9a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 16.5v-9Zm2.25-.5 6.75 5.2 6.75-5.2H6.25Zm13.25 2.16-6.22 4.8a1 1 0 0 1-1.26 0L4.5 9.16v7.34c0 .28.22.5.5.5h13c.28 0 .5-.22.5-.5V9.16Z" fill="currentColor" /></svg>
 }
 
+function ProjectModuleIconView({ icon }: { icon: ProjectModuleIcon }) {
+  const paths: Record<ProjectModuleIcon, string> = {
+    user: 'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-8 9a8 8 0 0 1 16 0',
+    database: 'M4 5c0-1.1 3.58-2 8-2s8 .9 8 2-3.58 2-8 2-8-.9-8-2Zm0 0v7c0 1.1 3.58 2 8 2s8-.9 8-2V5M4 12v7c0 1.1 3.58 2 8 2s8-.9 8-2v-7',
+    calendar: 'M5 4v3m14-3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v13H4V6a1 1 0 0 1 1-1Zm3 8h2m4 0h2m-8 4h2',
+    document: 'M6 3h8l4 4v14H6V3Zm8 0v5h5m-9 4h5m-5 4h5',
+    payment: 'M3 6h18v13H3V6Zm0 4h18m-14 5h4',
+    wallet: 'M4 6h15a2 2 0 0 1 2 2v11H5a2 2 0 0 1-2-2V6Zm0 0V5a2 2 0 0 1 2-2h12m3 9h-5a2 2 0 0 0 0 4h5v-4Z',
+    cleaning: 'm12 3 1.4 5.6L19 10l-5.6 1.4L12 17l-1.4-5.6L5 10l5.6-1.4L12 3Zm7 12 .7 2.3L22 18l-2.3.7L19 21l-.7-2.3L16 18l2.3-.7L19 15ZM5 14l1 3 3 1-3 1-1 3-1-3-3-1 3-1 1-3Z',
+    report: 'M4 20V4m0 16h17M8 16v-5m5 5V7m5 9v-8',
+    security: 'M12 3 20 6v5c0 5-3.4 8.4-8 10-4.6-1.6-8-5-8-10V6l8-3Zm-3 9 2 2 4-4',
+    settings: 'M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm0-5v2m0 14v2m9-9h-2M5 12H3m15.36-6.36-1.42 1.42M7.06 16.94l-1.42 1.42m12.72 0-1.42-1.42M7.06 7.06 5.64 5.64',
+    login: 'M9 4H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h4m7-4 4-4-4-4m4 4H9m3-8V4a2 2 0 0 1 4 0v2m-4 0h4',
+    dashboard: 'M3 3h8v8H3V3Zm10 0h8v5h-8V3Zm0 7h8v11h-8V10ZM3 13h8v8H3v-8Z',
+    mobile: 'M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Zm0 3h10m-6 13h2',
+    brain: 'M12 5a4 4 0 0 0-7 2.6A4.5 4.5 0 0 0 6 16a4 4 0 0 0 6 3V5Zm0 0a4 4 0 0 1 7 2.6A4.5 4.5 0 0 1 18 16a4 4 0 0 1-6 3m-4-9h4m-4 5h4m4-5h-1m1 5h-1',
+    chat: 'M4 5h16v12H9l-5 4V5Zm4 5h8m-8 4h5',
+    assistant: 'M12 3v3m0 12v3M3 12h3m12 0h3m-2.6-6.4-2.1 2.1M8.7 15.3l-2.1 2.1m0-10.6 2.1 2.1m6.6 6.4 2.1 2.1M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z',
+    bell: 'M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9Zm-8 12h4',
+    clipboard: 'M9 4h6l1 2h3v15H5V6h3l1-2Zm0 0V3h6v1m-6 7h6m-6 4h6',
+    'medical-record': 'M6 3h9l4 4v14H6V3Zm9 0v5h5m-6 3v6m-3-3h6m-7 7h8',
+    queue: 'M4 5h2m3 0h11M4 12h2m3 0h11M4 19h2m3 0h11',
+    phone: 'M6 3h3l2 5-2 2a15 15 0 0 0 5 5l2-2 5 2v3a2 2 0 0 1-2 2C10 19 5 14 4 5a2 2 0 0 1 2-2Z',
+    workflow: 'M6 4h4v4H6V4Zm8 12h4v4h-4v-4ZM8 8v4a2 2 0 0 0 2 2h6m-2-2 2 2-2 2',
+    kiosk: 'M3 3h18v13H3V3Zm7 13v5m4-5v5m-7 0h10',
+    hospital: 'M4 21V5h16v16M9 21v-5h6v5M8 9h2m4 0h2m-8 4h2m4 0h2m-3-8v4m-2-2h4',
+    building: 'M4 21V4h11v17m0-11h5v11M8 8h3m-3 4h3m-3 4h3m6 0h1',
+    doctor: 'M8 4a4 4 0 0 1 8 0v3a4 4 0 0 1-8 0V4Zm-4 17a8 8 0 0 1 16 0m-8-6v3m0 0 3 2m-3-2-3 2',
+    specialty: 'M12 3v18M3 12h18M5.6 5.6l12.8 12.8m0-12.8L5.6 18.4',
+    approval: 'M6 3h9l4 4v14H6V3Zm9 0v5h5m-10 4 2 2 4-4',
+    service: 'M12 3v18M3 12h18m-4.5-6.5 1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2ZM6 15l.7 1.3L8 17l-1.3.7L6 19l-.7-1.3L4 17l1.3-.7L6 15Z',
+    medicine: 'M7 4a5 5 0 0 0 0 10h10a5 5 0 0 0 0-10H7Zm5 0v10',
+    lab: 'M9 3h6m-5 0v7l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3m-7 12h12',
+    result: 'M5 3h14v18H5V3Zm3 12 3-3 2 2 4-5m-9 7h8',
+    'lab-building': 'M3 21V7h18v14M7 7V3h10v4M7 12h2m3 0h2m3 0h2m-12 5h2m3 0h2m3 0h2',
+    pharmacy: 'M4 21V7h16v14M8 7V4h8v3m-4 3v8m-4-4h8',
+    box: 'm3 7 9-4 9 4-9 4-9-4Zm0 0v10l9 4 9-4V7m-9 4v10',
+    procurement: 'M3 4h2l2 12h11l3-9H6m3 13h.01M17 20h.01m-9-9h9m-5-4v8',
+    insurance: 'M12 3 20 6v5c0 5-3.4 8.4-8 10-4.6-1.6-8-5-8-10V6l8-3Zm-3 9 2 2 4-4',
+    withdrawal: 'M4 7h15m-4-4 4 4-4 4m5 6H5m4-4-4 4 4 4',
+  }
+
+  return <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d={paths[icon]} /></svg>
+}
+
+function SkillIcon({ label }: { label: string }) {
+  const icon = label === 'Web Development' ? '⌘' : label === 'Programming & Database' ? '◇' : label === 'Tools, Design & Deployment' ? '↗' : '▥'
+  return <span className="skill-icon" aria-hidden="true">{icon}</span>
+}
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+    const savedTheme = window.localStorage.getItem('portfolio-theme')
+    if (savedTheme === 'dark' || savedTheme === 'light') return savedTheme
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+  })
   const [activeFilter, setActiveFilter] = useState<FilterOption>('All')
   const [selectedPhotoId, setSelectedPhotoId] = useState<number | null>(null)
   const [selectedCertificateId, setSelectedCertificateId] = useState<number | null>(null)
+  const [expandedEducation, setExpandedEducation] = useState<number | null>(0)
 
   const filteredPhotos = useMemo(() => activeFilter === 'All' ? galleryPhotos : galleryPhotos.filter((photo) => photo.category === activeFilter), [activeFilter])
   const selectedPhoto = selectedPhotoId !== null ? galleryPhotos.find((photo) => photo.id === selectedPhotoId) ?? null : null
   const selectedCertificate = selectedCertificateId !== null ? certificateItems.find((certificate) => certificate.id === selectedCertificateId) ?? null : null
   const featuredMemories = galleryPhotos.filter((photo) => photo.featured).slice(0, 5)
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme
+    window.localStorage.setItem('portfolio-theme', theme)
+  }, [theme])
 
   const changePhoto = useCallback((direction: number) => {
     if (!filteredPhotos.length) return
@@ -96,9 +163,9 @@ function App() {
     <div className="page-shell">
       <header className="topbar">
         <div className="container nav-wrap">
-          <a className="brand" href="#home" aria-label="Home"><span className="brand-mark"><img src="/images/profile/profile-photo.svg" alt="" /></span><span className="brand-text">Sreyneang</span></a>
-          <button type="button" className="nav-toggle" aria-label="Toggle navigation" aria-expanded={menuOpen} onClick={() => setMenuOpen((open) => !open)}><span /><span /><span /></button>
+          <a className="brand" href="#home" aria-label="Sreyneang home"><span className="brand-mark" aria-hidden="true"><span>SN</span><i /></span><span className="brand-copy"><span className="brand-text">Sreyneang</span><small>QA · Software</small></span></a>
           <nav className={`nav ${menuOpen ? 'open' : ''}`} aria-label="Main navigation">{navItems.map((item) => <a key={item.label} href={item.href} onClick={() => setMenuOpen(false)}>{item.label}</a>)}</nav>
+          <div className="nav-actions"><button type="button" className="theme-toggle" aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`} onClick={() => setTheme((currentTheme) => currentTheme === 'light' ? 'dark' : 'light')}><span aria-hidden="true">{theme === 'light' ? '☾' : '☀'}</span><span className="theme-toggle-label">{theme === 'light' ? 'Dark' : 'Light'}</span></button><button type="button" className="nav-toggle" aria-label="Toggle navigation" aria-expanded={menuOpen} onClick={() => setMenuOpen((open) => !open)}><span /><span /><span /></button></div>
         </div>
       </header>
 
@@ -128,15 +195,63 @@ function App() {
 
         <section id="about" className="section section-spacer"><div className="container"><div className="section-header"><span className="section-kicker">01 — ABOUT ME</span><h3>About Me</h3><p>I am a quality-focused software engineering student who cares deeply about clean experiences, solid validation, and thoughtful product decisions.</p></div><div className="about-grid"><article className="info-card reveal"><h4>Who I am</h4><p>I blend testing discipline with software development learning to create products that are easier to trust, easier to use, and easier to improve.</p></article><article className="info-card reveal"><h4>What I do</h4><p>I test user-facing flows, document product issues clearly, and build interfaces with a focus on clarity, accessibility, and maintainability.</p></article><article className="info-card reveal"><h4>What I enjoy</h4><p>I enjoy exploring workflows, solving usability problems, and improving quality through careful observation and consistent iteration.</p></article><article className="info-card reveal"><h4>My professional goal</h4><p>I want to grow into a role where software quality and engineering go hand in hand—building products people can rely on and teams can trust.</p></article></div></div></section>
 
-        <section id="skills" className="section section-spacer"><div className="container"><div className="section-header"><span className="section-kicker">02 — SKILLS</span><h3>Skills</h3><p>My strengths sit at the intersection of quality assurance, product thinking, and software engineering fundamentals.</p></div><div className="skills-grid">{skillGroups.map((group) => <article key={group.title} className="skill-card reveal"><h4>{group.title}</h4><div className="badge-list">{group.items.map((item) => <span key={item} className="badge">{item}</span>)}</div></article>)}</div></div></section>
+        <section id="skills" className="section section-spacer"><div className="container"><div className="section-header"><span className="section-kicker">02 — SKILLS</span><h3>Technical skills with a quality mindset</h3><p>My strengths sit at the intersection of software development, product thinking, and practical quality assurance. Select a category to scan the tools I use and learn.</p></div><div className="skills-grid technical-skills-grid">{technicalSkillGroups.map((group) => <article key={group.title} className="skill-card skill-card-modern reveal"><div className="skill-card-heading"><SkillIcon label={group.title} /><div><h4>{group.title}</h4><span>{group.items.length} skills</span></div></div><div className="badge-list">{group.items.map((item) => <span key={item} className="badge">{item}</span>)}</div></article>)}</div><div className="qa-section"><div className="subsection-heading"><span className="section-kicker small-kicker">Quality assurance focus</span><h4>QA testing skills</h4><p>My current practice is grounded in manual testing, clear documentation, and disciplined learning toward automation.</p></div><div className="qa-grid">{qaSkillGroups.map((group) => <article key={group.title} className={`qa-card ${group.tone} reveal`}><div className="qa-card-topline"><div><span className="qa-status-dot" aria-hidden="true" /><h5>{group.title}</h5></div><span className="status-label-chip">{group.status}</span></div><div className="qa-chip-list">{group.items.map((item) => <span key={item} className="qa-chip">{item}</span>)}</div></article>)}</div></div><div className="soft-skills-block"><div className="subsection-heading"><span className="section-kicker small-kicker">How I work</span><h4>Soft skills</h4></div><div className="soft-skills-grid">{softSkills.map((skill, index) => <div key={skill} className="soft-skill"><span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span><strong>{skill}</strong></div>)}</div></div></div></section>
 
         <section id="experience" className="section section-spacer"><div className="container"><div className="section-header"><span className="section-kicker">03 — EXPERIENCE</span><h3>Experience</h3><p>I focus on practical quality, user flow validation, and the communication needed to improve products consistently.</p></div><div className="timeline">{experience.map((item) => <article key={item.role} className="timeline-item reveal"><div className="timeline-marker" aria-hidden="true" /><div className="timeline-card"><div className="timeline-topline"><div><h4>{item.role}</h4><span>{item.company}</span></div><time>{item.period}</time></div><p>{item.description}</p><ul>{item.responsibilities.map((responsibility) => <li key={responsibility}>{responsibility}</li>)}</ul></div></article>)}</div></div></section>
 
-        <section id="projects" className="section section-spacer"><div className="container"><div className="section-header"><span className="section-kicker">04 — PROJECTS</span><h3>Projects</h3><p>I enjoy building clear, functional work that demonstrates both product thinking and quality awareness.</p></div><div className="project-grid">{portfolioProjects.map((project) => <article key={project.id} className="project-card reveal"><div className="project-visual" aria-hidden="true"><div className="project-window"><span className="window-dots"><i /><i /><i /></span><div className="project-placeholder" /></div></div><div className="project-body"><div className="project-meta"><span>{project.category}</span></div><h4>{project.name}</h4><p>{project.description}</p><div className="tech-list">{project.technologies.map((tech) => <span key={tech}>{tech}</span>)}</div><div className="project-contribution"><strong>My contribution</strong><p>{project.contribution}</p></div><div className="project-actions">{project.projectLink ? <a className="button primary small" href={project.projectLink} target="_blank" rel="noreferrer">View Project</a> : null}{project.githubLink ? <a className="button secondary small" href={project.githubLink} target="_blank" rel="noreferrer">GitHub</a> : null}</div></div></article>)}</div></div></section>
+        <section id="projects" className="section section-spacer">
+          <div className="container">
+            <div className="section-header">
+              <span className="section-kicker">04 — PROJECTS</span>
+              <h3>Projects</h3>
+              <p>I enjoy building clear, functional work that demonstrates both product thinking and quality awareness.</p>
+            </div>
+            <div className="project-grid">
+              {updatedPortfolioProjects.map((project) => (
+                <article key={project.id} className="project-card reveal">
+                  <div className="project-visual">
+                    <div className="project-window">
+                      <span className="window-dots" aria-hidden="true"><i /><i /><i /></span>
+                      {project.image ? <img className="project-image" src={project.image} alt={`Illustrative mockup for ${project.name}`} /> : <div className="project-placeholder" aria-hidden="true" />}
+                    </div>
+                  </div>
+                  <div className="project-body">
+                    <div className="project-meta"><span>{project.category}</span></div>
+                    <h4>{project.name}</h4>
+                    <p>{project.description}</p>
+                    {project.modules?.length ? (
+                      <div className={`project-modules ${project.modules.length > 20 ? 'project-modules-dense' : ''}`}>
+                        <h5>Features &amp; modules</h5>
+                        <ul>
+                          {project.modules.map((module) => (
+                            <li key={module.name}>
+                              <ProjectModuleIconView icon={module.icon} />
+                              <span>{module.name}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ) : null}
+                    <div className="tech-list">{project.technologies.map((tech) => <span key={tech}>{tech}</span>)}</div>
+                    {project.qaFocus?.length ? <div className="qa-focus-panel"><div className="qa-focus-heading"><span className="qa-focus-icon" aria-hidden="true">✓</span><div><strong>QA focus</strong><small>Example test flow areas</small></div></div><div className="qa-focus-list">{project.qaFocus.map((focus) => <span key={focus}>{focus}</span>)}</div></div> : null}
+                    <div className="project-contribution">
+                      <strong>My contribution</strong>
+                      <p>{project.contribution}</p>
+                    </div>
+                    <div className="project-actions">
+                      {project.projectLink ? <a className="button primary small" href={project.projectLink} target="_blank" rel="noreferrer">View Project</a> : null}
+                      {project.githubLink ? <a className="button secondary small" href={project.githubLink} target="_blank" rel="noreferrer">GitHub</a> : null}
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
 
         <section id="journey" className="section section-spacer"><div className="container"><div className="section-header"><span className="section-kicker">05 — MY JOURNEY</span><h3>From where I started to where I&apos;m going</h3><p>A personal look at the path that shaped who I am today. Dates are intentionally editable in.</p></div><div className="journey-layout"><div className="journey-intro reveal"><h4>Where I started → what I learned → what I do now</h4><p>My story is shaped by curiosity, learning, and constant improvement. Each chapter connects the person I was, the experiences I have had, and the quality-focused professional I am becoming.</p></div><div className="journey-milestones reveal">{journeyItems.map((item) => <div key={item.id} className="milestone-item"><span className="milestone-year">{item.year}</span><div className="milestone-content"><h5>{item.title}</h5><p>{item.description}</p>{item.achievement ? <small>{item.achievement}</small> : null}</div></div>)}</div></div><div className="featured-memories reveal"><div className="section-subtitle"><span>Featured Memories</span><h4>Some moments that shaped my journey</h4></div><div className="featured-grid">{featuredMemories.map((photo, index) => <button key={photo.id} type="button" className={`featured-item ${index === 0 ? 'featured-large' : ''}`} onClick={() => setSelectedPhotoId(photo.id)} aria-label={`Open ${photo.title}`}><img src={photo.image} alt={photo.title} /><span className="featured-caption"><strong>{photo.title}</strong><small>{photo.year}</small></span></button>)}</div></div><div className="gallery-card reveal"><div className="gallery-head"><div><span className="section-kicker small-kicker">Childhood Memories · Photo Gallery</span><h4>Where It All Started</h4></div></div><div className="gallery-filters" aria-label="Photo filters">{filterOptions.map((option) => <button key={option} type="button" className={option === activeFilter ? 'filter-button active' : 'filter-button'} onClick={() => setActiveFilter(option)}>{option}</button>)}</div><div className="gallery-grid">{filteredPhotos.map((photo) => <button key={photo.id} type="button" className="gallery-item" onClick={() => setSelectedPhotoId(photo.id)} aria-label={`View ${photo.title}`}><img src={photo.image} alt={photo.title} /><span className="gallery-overlay"><strong>{photo.title}</strong><small>{photo.category} · {photo.year}</small></span></button>)}</div></div></div></section>
 
-        <section className="section section-spacer"><div className="container"><div className="section-header"><span className="section-kicker">05 — EDUCATION</span><h3>Education &amp; Learning</h3><p>I keep my growth grounded in practical skills, product thinking, and the disciplines required to deliver quality software.</p></div><div className="education-grid">{education.map((item) => <article key={item.title} className="edu-card reveal"><h4>{item.title}</h4><span>{item.meta}</span><p>{item.description}</p></article>)}</div></div></section>
+        <section id="education" className="section section-spacer"><div className="container"><div className="section-header"><span className="section-kicker">06 — EDUCATION</span><h3>Education &amp; learning</h3><p>My education connects software development fundamentals with the systems thinking and communication needed for quality work.</p></div><div className="education-grid">{education.map((item, index) => <article key={item.title} className={`edu-card edu-card-expandable reveal ${expandedEducation === index ? 'expanded' : ''}`}><button type="button" className="edu-toggle" aria-expanded={expandedEducation === index} onClick={() => setExpandedEducation(expandedEducation === index ? null : index)}><span className="edu-number">0{index + 1}</span><span className="edu-title-wrap"><h4>{item.title}</h4><span>{item.meta}</span></span><span className="edu-chevron" aria-hidden="true">⌄</span></button><div className="edu-details"><p>{item.description}</p><div className="edu-detail-grid"><div><strong>Relevant coursework</strong><ul>{item.courses.map((course) => <li key={course}>{course}</li>)}</ul></div><div><strong>Technology tags</strong><div className="badge-list">{item.technologies.map((technology) => <span key={technology} className="badge">{technology}</span>)}</div></div></div></div></article>)}</div></div></section>
 
         {/* <section id="certificates" className="section section-spacer"><div className="container"><div className="section-header"><span className="section-kicker">06 — CERTIFICATES</span><h3>Certificates &amp; Training</h3><p>A dedicated area for qualifications and formal learning. Add new entries in <code>src/data/certificates.ts</code> without editing this layout.</p></div><div className="certificate-grid">{certificateItems.map((certificate) => <article key={certificate.id} className="certificate-card reveal"><img src={certificate.image} alt={certificate.title} /><div className="certificate-body"><div className="certificate-topline"><span>{certificate.category}</span><time>{certificate.date}</time></div><h4>{certificate.title}</h4><p className="organization">{certificate.organization}</p><p>{certificate.description}</p><button type="button" className="button secondary small" onClick={() => setSelectedCertificateId(certificate.id)}>View Certificate</button></div></article>)}</div></div></section> */}
 

@@ -156,10 +156,16 @@ Example:
   description: "A project focused on tracking defects and release validation.",
   technologies: ["React", "TypeScript", "Testing"],
   contribution: "Designed the interface, test flows, and validation process for the product.",
+  modules: [
+    { name: "Appointments", icon: "calendar" },
+    { name: "Reports", icon: "report" },
+  ],
   projectLink: "",
   githubLink: "",
 }
 ```
+
+`modules` is optional. Each item appears with a professional inline icon; choose an icon from the `ProjectModuleIcon` type in `src/data/projects.ts`.
 
 ## Project structure
 
